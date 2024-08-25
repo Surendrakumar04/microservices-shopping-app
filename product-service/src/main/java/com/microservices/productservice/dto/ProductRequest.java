@@ -15,11 +15,11 @@ import java.math.BigDecimal;
 public class ProductRequest {
 
     private String name;
-    private String desciption;
+    private String description;
     private BigDecimal price;
 
     public Product toModel(){
-        return Product.builder().description(this.desciption).name(this.name).price(this.price).build();
+        return Product.builder().description(this.description).name(this.name).price(this.price).build();
     }
 }
 
