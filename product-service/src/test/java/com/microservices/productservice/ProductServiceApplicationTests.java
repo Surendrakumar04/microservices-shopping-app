@@ -1,6 +1,5 @@
 package com.microservices.productservice;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microservices.productservice.dto.ProductRequest;
 import com.microservices.productservice.respository.ProductRepository;
@@ -57,9 +56,16 @@ class ProductServiceApplicationTests {
 	private ProductRequest getProductRequest() {
 		return ProductRequest.builder()
 				.name("Iphone 13")
-				.desciption("Iphone 13 IOS Device With XDR Retina display and bionic chip")
+				.description("Iphone 13 IOS Device With XDR Retina display and bionic chip")
 				.price(BigDecimal.valueOf(46000))
 				.build();
+	}
+
+	@Test
+	void shouldFetchAllProducts() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.get("/api/product")
+					.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
 	}
 
 }
